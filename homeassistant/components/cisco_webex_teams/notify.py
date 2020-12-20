@@ -2,7 +2,7 @@
 import logging
 
 import voluptuous as vol
-from webexteamssdk import ApiError, WebexTeamsAPI, exceptions
+import webexteamssdk
 
 from homeassistant.components.notify import (
     ATTR_TITLE,
@@ -24,11 +24,11 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 def get_service(hass, config, discovery_info=None):
     """Get the CiscoWebexTeams notification service."""
 
-    client = WebexTeamsAPI(access_token=config[CONF_TOKEN])
+    client = webexteamssdk.WebexTeamsAPI(access_token=config[CONF_TOKEN])
     try:
         # Validate the token & room_id
         client.rooms.get(config[CONF_ROOM_ID])
-    except exceptions.ApiError as error:
+    except webexteamssdk.ApiError as error:
         _LOGGER.error(error)
         return None
 
@@ -52,7 +52,7 @@ class CiscoWebexTeamsNotificationService(BaseNotificationService):
 
         try:
             self.client.messages.create(roomId=self.room, html=f"{title}{message}")
-        except ApiError as api_error:
+        except webexteamssdk.ApiError as error:
             _LOGGER.error(
-                "Could not send CiscoWebexTeams notification. Error: %s", api_error
+                "Could not send CiscoWebexTeams notification. Error: %s", error
             )

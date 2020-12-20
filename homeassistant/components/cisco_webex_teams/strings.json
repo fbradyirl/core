@@ -1,0 +1,25 @@
+{
+  "title": "cisco_webex_teams",
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "token": "[%key:common::config_flow::data::token%]",
+          "email": "[%key:common::config_flow::data::email%]"
+        },
+        "title": "Cisco Webex",
+        "description": "[%key:common::config_flow::description%]"
+      }
+    },
+    "error": {
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
+      "invalid_email": "[%key:common::config_flow::error::invalid_email%]",
+      "email_not_found": "[%key:common::config_flow::error::email_not_found%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]"
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+    }
+  }
+}

@@ -1,7 +1,16 @@
 {
   "domain": "cisco_webex_teams",
-  "name": "Cisco Webex Teams",
-  "documentation": "https://www.home-assistant.io/integrations/cisco_webex_teams",
-  "requirements": ["webexteamssdk==1.1.1"],
-  "codeowners": ["@fbradyirl"]
+  "name": "Cisco Webex",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/cisco_webex",
+  "requirements": [
+    "webexteamssdk==1.6"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@fbradyirl"
+  ]
 }
